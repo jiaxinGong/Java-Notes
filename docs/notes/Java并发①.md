@@ -44,10 +44,10 @@
 
 ## 队列 并发集合等
 
-##并发涉及知识点
-- 并发编程下的ABA是什么问题？
+## 并发涉及知识点
+- 并发编程下的ABA是什么问题？<br>
   假设有两个线程Thread1和Thread2，Thread1计划更新一个变量UserA(name='A',age=18)，Thread1计划把变量UserA修改为UserB(name='B',age=28),此时
   Thread2先获得了执行权，也计划更新UserA,把UserA更改为UserC(name='C',age=38),再把UserC更改为UserA,但同时也修改了UserA的年龄，
   改成了UserA(name='A',age=19),Thread2执行完成后，Thread1执行，此时的UserA非彼时的UserA,但Thread1不知道，仍然更新成功，此时就出现了ABA问题
-- Unsafe是什么问题？
+- Unsafe是什么问题？<br>
   是一个本地类，用来操作内存的相关操作
