@@ -30,34 +30,61 @@ import com.jiaxin.leetcode.linkedlist.base.ListNode;
  */
 public class ReverseNodesInKGroup extends AbstractLinkedListTest {
 
-/*    public ListNode reverseKGroup(ListNode head, int k) {
+    /**
+     * Thouthts: 计算链表长度，找到结束逻辑；推导公式：m=n*k-k+1,n=n*k；利用reverseBetween解决；从前往后解决
+     * @param head
+     * @param k
+     * @return
+     */
+    public ListNode reverseKGroup(ListNode head, int k) {
         if(head == null){
             return null;
         }
-        ListNode knode = head;
-//        ListNode pre =
-        for (int i = 0; i < k; i++) {// 找k节点
-            knode = knode.next;
+        int length = 0;
+        ListNode current = head;
+        while (current != null){
+            length++;
+            current = current.next;
         }
-        if(knode != null){// 找到了k节点
-            knode = reverseKGroup(knode.next,k);// 处理k+1节点
-            ListNode pre = new ListNode(-1);
-            pre.next = head;
-            ListNode start = head;
-            ListNode then = start.next;
-
-            for (int i = 0; i < k; i++) {
-                start.next = then.next;
-                then.next = pre.next;
-                pre.next = then;
-                then = start.next;
+        int n = 1;
+        while(true){
+            if(n*k > length){
+                break;
             }
-
+            head = reverseBetweenByMarkThreeNodes(head,(n*k-k+1),n*k);
+            ++n;
         }
         return head;
-    }*/
+    }
 
-    public ListNode reverseKGroup(ListNode head, int k) {
+    public ListNode reverseBetweenByMarkThreeNodes(ListNode head, int m, int n) {
+        if (head == null) {
+            return null;
+        }
+
+        ListNode dummy = new ListNode(-1);// 创建一个虚拟节点标记链表头部
+        dummy.next = head;
+
+        ListNode pre = dummy;// 用来标记转换前的节点
+        for(int i = 0; i< m-1;i++){
+            pre = pre.next;// 找到待反转的前一个节点
+        }
+
+        ListNode start = pre.next;// 标记需要反转的起始节点
+        ListNode then = start.next;// 标记下一节点
+
+        for(int i = 0;i< n - m;i++){
+            start.next =  then.next;
+            then.next = pre.next;
+            pre.next = then;
+            then = start.next;
+        }
+        return dummy.next;
+    }
+
+    //========================================================================
+
+    public ListNode reverseKGroupOfWhile(ListNode head, int k) {
         ListNode curr = head;
         int count = 0;
         while (curr != null && count != k) { // find the k+1 node
@@ -65,7 +92,7 @@ public class ReverseNodesInKGroup extends AbstractLinkedListTest {
             count++;
         }
         if (count == k) { // if k+1 node is found
-            curr = reverseKGroup(curr, k); // reverse list with k+1 node as head
+            curr = reverseKGroupOfWhile(curr, k); // reverse list with k+1 node as head
             // head - head-pointer to direct part,
             // curr - head-pointer to reversed part;
             while (count-- > 0) { // reverse current k-group:
@@ -167,6 +194,6 @@ public class ReverseNodesInKGroup extends AbstractLinkedListTest {
     }
 
     public static void main(String[] args) {
-        print(new ReverseNodesInKGroup().reverseKGroup(createNodeLists(new int[]{1,2}),2));
+        print(new ReverseNodesInKGroup().reverseKGroup(createNodeLists(new int[]{1,2,3}),2));
     }
 }
