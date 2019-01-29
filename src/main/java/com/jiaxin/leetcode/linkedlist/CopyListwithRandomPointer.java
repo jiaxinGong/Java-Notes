@@ -1,5 +1,6 @@
 package com.jiaxin.leetcode.linkedlist;
 
+import com.alibaba.fastjson.JSON;
 import com.jiaxin.leetcode.linkedlist.base.RandomListNode;
 
 /**
@@ -15,57 +16,54 @@ import com.jiaxin.leetcode.linkedlist.base.RandomListNode;
  * @since 2019/1/29 17:36
  */
 public class CopyListwithRandomPointer {
+
+    /**
+     * 深度拷贝链表
+     * Thoughts:一个接着一个copy，深度copy需要逐渐创建各个对象
+     * @param head
+     * @return
+     */
     public RandomListNode copyRandomList(RandomListNode head) {
         if(head == null) {
             return null;
         }
-        RandomListNode newHead = new RandomListNode(head.label);
-        //Get the newHead in the end
-        RandomListNode newCur = newHead;
+        RandomListNode dummy = new RandomListNode(-1);
+        RandomListNode tail = dummy;
 
-        if(head.random != null) {
-            RandomListNode newRandom = new RandomListNode(head.random.label);
-            newCur.random = newRandom;
-        }
-
-
-
-        return null;
-    }
-
-    public RandomListNode copyRandomListOf(RandomListNode head) {
-        if(head == null) {
-            return null;
-        }
-
-        RandomListNode newHead = new RandomListNode(head.label);
-
-        //Get the newHead in the end
-        RandomListNode newCur = newHead;
-
-        while(head.next != null) {
-            //Copy the next node
-            RandomListNode newNext = new RandomListNode(head.next.label);
-            newCur.next = newNext;
-
-            //Copy the random node
-            if(head.random != null) {
-                RandomListNode newRandom = new RandomListNode(head.random.label);
-                newCur.random = newRandom;
+        while (head != null){
+            RandomListNode randomListNode = new RandomListNode(head.label);
+            tail.next = randomListNode;
+            if(head.random != null){
+                randomListNode.random = new RandomListNode(head.random.label);
             }
-
-            //Point the current node to the next node
-            newCur = newCur.next;
+            tail = tail.next;
             head = head.next;
         }
+        return dummy.next;
+    }
 
-        //The next of the last node must be null,
-        //but the random of the last node might not be null
-        if(head.random != null) {
-            RandomListNode newRandom = new RandomListNode(head.random.label);
-            newCur.random = newRandom;
-        }
+    public static void main(String[] args) {
+        RandomListNode  r1 = new RandomListNode(1);
+        RandomListNode  rr1 = new RandomListNode(1);
+        RandomListNode  r2 = new RandomListNode(1);
+        RandomListNode  rr2 = new RandomListNode(1);
+        RandomListNode  r3 = new RandomListNode(1);
+        RandomListNode  rr3 = new RandomListNode(1);
+        RandomListNode  r4 = new RandomListNode(1);
+        RandomListNode  rr4 = new RandomListNode(1);
+        RandomListNode  r5 = new RandomListNode(1);
+        RandomListNode  rr5 = new RandomListNode(1);
+        r1.random = rr1;
+        r1.next = r2;
+        r2.random = rr2;
+        r2.next = r3;
+        r3.random =rr3;
+        r3.next = r4;
+        r4.random =rr4;
+        r4.next = r5;
+        r5.random = rr5;
 
-        return newHead;
+        RandomListNode result = new CopyListwithRandomPointer().copyRandomList(r1);
+        System.out.println(JSON.toJSON(result));
     }
 }

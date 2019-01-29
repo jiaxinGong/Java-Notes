@@ -17,7 +17,7 @@ import com.jiaxin.leetcode.linkedlist.base.ListNode;
  * @author jiaxin.gong
  * @since 2019/1/26 18:45
  */
-public class IntersectionofTwoLinkedLists extends AbstractLinkedListTest {
+public class IntersectionOfTwoLinkedLists extends AbstractLinkedListTest {
 
     /**
      * Thoughts： 找两个链表的重合点; 长度不同的话，切掉较大的那个 extra length ;长度相同后，会同时达到重合点
@@ -63,7 +63,7 @@ public class IntersectionofTwoLinkedLists extends AbstractLinkedListTest {
     }
 
     public static void main(String[] args) {
-        print(new IntersectionofTwoLinkedLists()
+        print(new IntersectionOfTwoLinkedLists()
             .getIntersectionNode(createNodeLists(new int[]{4, 1, 8, 4, 5})
                 , createNodeLists(new int[]{5, 0, 1, 8, 4, 5})));
     }
