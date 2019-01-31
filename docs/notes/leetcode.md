@@ -1,6 +1,10 @@
 # leetcode
 
 ## Linked List
+**关于刷这个主题的心得**
+快慢指针是个好东西，经常用来找中间点或者判断链表是否有循环
+
+
  21. Merge Two Sorted Lists
  Merge two sorted linked lists and return it as a new list.
  The new list should be made by splicing together the nodes of the first two lists.
