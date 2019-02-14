@@ -71,7 +71,7 @@ public class LinkedListCycleII {
      * @param head
      * @return
      */
-    public ListNode detectCycleOfMay(ListNode head) {
+    public ListNode detectCycleOfMap(ListNode head) {
         Map<ListNode,Boolean> cash =  new HashMap<>();
         while (head != null){
             if(Boolean.TRUE == cash.putIfAbsent(head,Boolean.TRUE)){

@@ -46,7 +46,7 @@ public class LinkedListCycle {
     }
 
     /**
-     * ②：用快慢指针，若有循环，快的一定会追上慢的
+     * 解体思路②：用快慢指针，若有循环，快的一定会追上慢的
      */
     public boolean hasCycleOfPoint(ListNode head) {
         if (head == null || head.next == null) {

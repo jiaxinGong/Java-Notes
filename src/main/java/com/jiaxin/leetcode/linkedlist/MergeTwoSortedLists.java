@@ -17,9 +17,14 @@ import com.jiaxin.leetcode.linkedlist.base.ListNode;
  * @author jiaxin.gong
  * @since 2019/1/25 15:08
  */
-public class MergeTwoLists extends AbstractLinkedListTest {
-    // 改变各节点的指针指向
+public class MergeTwoSortedLists extends AbstractLinkedListTest {
 
+    /**
+     * Thouthts:改变各节点的指针指向
+     * @param l1
+     * @param l2
+     * @return
+     */
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
         ListNode head = new ListNode(0);
         ListNode tail = head;
@@ -44,7 +49,7 @@ public class MergeTwoLists extends AbstractLinkedListTest {
     }
 
     public static void main(String[] args) {
-        print(new MergeTwoLists().mergeTwoLists(createNodeLists(new int[]{1,3,3,4,5})
+        print(new MergeTwoSortedLists().mergeTwoLists(createNodeLists(new int[]{1,3,3,4,5})
             ,createNodeLists(new int[]{2,4,6,6})));
     }
 }
