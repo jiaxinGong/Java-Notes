@@ -49,15 +49,15 @@ public class ConvertSortedListToBinarySearchTree extends AbstractLinkedListTest 
         if(head == tail){
             return null;
         }
-        ListNode low = head;
+        ListNode slow = head;
         ListNode fast = head;
         while (fast != tail && fast.next != tail){ // 找到中间节点
-            low = low.next;
+            slow = slow.next;
             fast = fast.next.next;
         }
-        TreeNode treeNode = new TreeNode(low.val);
-        treeNode.left = toBST(head,low);// 左子树
-        treeNode.right = toBST(low.next,tail);// 右子树
+        TreeNode treeNode = new TreeNode(slow.val);
+        treeNode.left = toBST(head,slow);// 左子树
+        treeNode.right = toBST(slow.next,tail);// 右子树
 
         return treeNode;
     }

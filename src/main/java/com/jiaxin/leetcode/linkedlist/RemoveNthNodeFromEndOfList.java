@@ -30,7 +30,7 @@ public class RemoveNthNodeFromEndOfList extends AbstractLinkedListTest {
 
     /**
      * Thouthts:计算出链表的长度，在计算出需要删除的坐标；
-     * 由于有可能是删除坐标为0的头节点，所以需要新建一个节点作为起始姐弟阿森纳标记；
+     * 由于有可能是删除坐标为0的头节点，所以需要新建一个节点作为起始节点进行标记；
      * 由于需要删除节点，所以需要记录上一节点
      * @param head
      * @param n

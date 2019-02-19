@@ -61,6 +61,6 @@ public class PalindromeLinkedList extends AbstractLinkedListTest {
     }
 
     public static void main(String[] args) {
-        System.out.println(new PalindromeLinkedList().isPalindrome(createNodeLists(new int[]{1,2,1,1,2,1})));
+        System.out.println(new PalindromeLinkedList().isPalindrome(createNodeLists(new int[]{1,2,1})));
     }
 }

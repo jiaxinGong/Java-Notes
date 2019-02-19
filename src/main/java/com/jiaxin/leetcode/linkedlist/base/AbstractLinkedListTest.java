@@ -1,9 +1,5 @@
 package com.jiaxin.leetcode.linkedlist.base;
 
-
-import com.jiaxin.leetcode.linkedlist.base.ListNode;
-import java.util.HashMap;
-
 /**
  * <p>
  *  抽取公共方法
