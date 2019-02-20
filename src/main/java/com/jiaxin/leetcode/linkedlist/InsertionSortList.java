@@ -35,8 +35,6 @@ public class InsertionSortList extends AbstractLinkedListTest {
 
     /**
      * 插入排序
-     * @param head
-     * @return
      */
     public ListNode insertionSortList(ListNode head) {
         if (head == null) {
@@ -79,6 +77,7 @@ public class InsertionSortList extends AbstractLinkedListTest {
     }
 
     public static void main(String[] args) {
-        print(new InsertionSortList().insertionSortList(createNodeLists(new int[]{1, 3, 4, 6, 2,5,0})));
+        print(new InsertionSortList()
+            .insertionSortList(createNodeLists(new int[]{1, 3, 4, 6, 2, 5, 0})));
     }
 }
