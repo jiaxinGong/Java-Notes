@@ -26,13 +26,13 @@ public class RemoveDuplicatesFromSortedList {
      */
     public ListNode deleteDuplicates(ListNode head) {
         ListNode pre = head;
-        ListNode tail = head;
-        while (tail != null){
-            if(pre.val != tail.val){
-                pre.next = tail;
+        ListNode next = head;
+        while (next != null){
+            if(pre.val != next.val){
+                pre.next = next;
                 pre = pre.next;
             }
-            tail = tail.next;
+            next = next.next;
         }
         if(pre != null){
             pre.next = null;
