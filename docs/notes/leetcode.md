@@ -1,5 +1,6 @@
 # leetcode
 刷题主题顺序：链表、二叉树、回溯、深度广度优先遍历、图、贪心、递归、数组、哈希表
+
 刷题难易度顺序：由易到难
 
 ## Linked List
@@ -12,6 +13,7 @@
 **题目**
 
  21【Easy】 - Merge Two Sorted Lists 合并两个有序链表
+ 
  Merge two sorted linked lists and return it as a new list.
  The new list should be made by splicing together the nodes of the first two lists.
  
@@ -50,6 +52,7 @@
  ```
  
  83【Easy】 - Remove Duplicates from Sorted List 删除重复的节点
+ 
  Given a sorted linked list, delete all duplicates such that each element appear only once.
  
  Example 1:
