@@ -20,7 +20,7 @@ import java.util.Arrays;
  * <p>
  * 所以冒泡排序的时间复杂度为O(N^2)。
  */
-public class Code02_BubbleSort {
+public class Code02_BubbleSort_Copy {
 
     public static void bubbleSort(int[] arr) {
         if (arr == null || arr.length < 2) {
@@ -29,10 +29,10 @@ public class Code02_BubbleSort {
         // 0 ~ N-1
         // 0 ~ N-2
         // 0 ~ N-3
-        for (int e = arr.length - 1; e > 0; e--) { // 0 ~ e
-            for (int i = 0; i < e; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    swap(arr, i, i + 1);
+        for (int i = arr.length -1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if(arr[j] > arr[j+1]){
+                    swap(arr,j,j+1);
                 }
             }
         }
@@ -103,7 +103,7 @@ public class Code02_BubbleSort {
 
     // for test
     public static void main(String[] args) {
-        int testTime = 500000;
+        int testTime = 10000;
         int maxSize = 100;
         int maxValue = 100;
         boolean succeed = true;

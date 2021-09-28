@@ -3,46 +3,39 @@ package com.jiaxin.algorithm.class01;
 import java.util.Arrays;
 
 /**
- * 冒泡排序
- * 过程：
- * 在arr[0～N-1]范围上：
- * arr[0]和arr[1]，谁大谁来到1位置；arr[1]和arr[2]，谁大谁来到2位置…arr[N-2]和arr[N-1]，谁大谁来到N-1位置
+ * 选择排序</br>
+ * 过程：</br>
+ * arr[0～N-1]范围上，找到最小值所在的位置，然后把最小值交换到0位置。</br>
+ * arr[1～N-1]范围上，找到最小值所在的位置，然后把最小值交换到1位置。</br>
+ * arr[2～N-1]范围上，找到最小值所在的位置，然后把最小值交换到2位置。</br>
+ * …</br>
+ * arr[N-1～N-1]范围上，找到最小值位置，然后把最小值交换到N-1位置。</br>
  * <p>
- * 在arr[0～N-2]范围上，重复上面的过程，但最后一步是arr[N-3]和arr[N-2]，谁大谁来到N-2位置
- * 在arr[0～N-3]范围上，重复上面的过程，但最后一步是arr[N-4]和arr[N-3]，谁大谁来到N-3位置
- * …
- * 最后在arr[0～1]范围上，重复上面的过程，但最后一步是arr[0]和arr[1]，谁大谁来到1位置
+ * 估算：</br>
+ * 很明显，如果arr长度为N，每一步常数操作的数量，如等差数列一般</br>
+ * 所以，总的常数操作数量 = a*(N^2) + b*N + c (a、b、c都是常数)</br>
  * <p>
- * <p>
- * 估算：
- * 很明显，如果arr长度为N，每一步常数操作的数量，依然如等差数列一般
- * 所以，总的常数操作数量 = a*(N^2) + b*N + c (a、b、c都是常数)
- * <p>
- * 所以冒泡排序的时间复杂度为O(N^2)。
+ * 所以选择排序的时间复杂度为O(N^2)。</br>
  */
-public class Code02_BubbleSort {
+public class Code01_SelectionSort_Copy {
 
-    public static void bubbleSort(int[] arr) {
+    public static void selectionSort(int[] arr) {
         if (arr == null || arr.length < 2) {
             return;
         }
-        // 0 ~ N-1
-        // 0 ~ N-2
-        // 0 ~ N-3
-        for (int e = arr.length - 1; e > 0; e--) { // 0 ~ e
-            for (int i = 0; i < e; i++) {
-                if (arr[i] > arr[i + 1]) {
-                    swap(arr, i, i + 1);
-                }
+        for (int i = 0; i < arr.length - 1; i++) {
+            int minIndex = i;
+            for (int j = i + 1; j < arr.length; j++) {
+                minIndex = arr[j] < arr[minIndex] ? j : minIndex;
             }
+            swap(arr, i, minIndex);
         }
     }
 
-    // 交换arr的i和j位置上的值
     public static void swap(int[] arr, int i, int j) {
-        arr[i] = arr[i] ^ arr[j];
-        arr[j] = arr[i] ^ arr[j];
-        arr[i] = arr[i] ^ arr[j];
+        int tmp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = tmp;
     }
 
     // for test
@@ -52,9 +45,13 @@ public class Code02_BubbleSort {
 
     // for test
     public static int[] generateRandomArray(int maxSize, int maxValue) {
-        int[] arr = new int[(int)((maxSize + 1) * Math.random())];
+        // Math.random()   [0,1)
+        // Math.random() * N  [0,N)
+        // (int)(Math.random() * N)  [0, N-1]
+        int[] arr = new int[(int)(Math.random() * maxSize)];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = (int)((maxValue + 1) * Math.random()) - (int)(maxValue * Math.random());
+            // [-? , +?]
+            arr[i] = (int)(Math.random() * (maxValue + 1)) - (int)(Math.random() * maxValue);
         }
         return arr;
     }
@@ -64,16 +61,16 @@ public class Code02_BubbleSort {
         if (arr == null) {
             return null;
         }
-        int[] res = new int[arr.length];
+        int[] copy = new int[arr.length];
         for (int i = 0; i < arr.length; i++) {
-            res[i] = arr[i];
+            copy[i] = arr[i];
         }
-        return res;
+        return copy;
     }
 
     // for test
     public static boolean isEqual(int[] arr1, int[] arr2) {
-        if ((arr1 == null && arr2 != null) || (arr1 != null && arr2 == null)) {
+        if ((arr1 == null && arr1 != null) || (arr1 != null && arr2 == null)) {
             return false;
         }
         if (arr1 == null && arr2 == null) {
@@ -103,17 +100,19 @@ public class Code02_BubbleSort {
 
     // for test
     public static void main(String[] args) {
-        int testTime = 500000;
+        int testTime = 1;
         int maxSize = 100;
         int maxValue = 100;
         boolean succeed = true;
         for (int i = 0; i < testTime; i++) {
             int[] arr1 = generateRandomArray(maxSize, maxValue);
             int[] arr2 = copyArray(arr1);
-            bubbleSort(arr1);
+            selectionSort(arr1);
             comparator(arr2);
             if (!isEqual(arr1, arr2)) {
                 succeed = false;
+                printArray(arr1);
+                printArray(arr2);
                 break;
             }
         }
@@ -121,7 +120,7 @@ public class Code02_BubbleSort {
 
         int[] arr = generateRandomArray(maxSize, maxValue);
         printArray(arr);
-        bubbleSort(arr);
+        selectionSort(arr);
         printArray(arr);
     }
 

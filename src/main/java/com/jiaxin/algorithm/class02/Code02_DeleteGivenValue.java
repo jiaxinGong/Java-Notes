@@ -1,5 +1,8 @@
 package com.jiaxin.algorithm.class02;
 
+/**
+ * 删除给定值
+ */
 public class Code02_DeleteGivenValue {
 
 	public static class Node {

@@ -1,5 +1,8 @@
 package com.jiaxin.algorithm.class01;
 
+/**
+ * 二分查找
+ */
 public class Code04_BSExist {
 
 	public static boolean exist(int[] sortedArr, int num) {

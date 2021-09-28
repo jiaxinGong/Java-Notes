@@ -2,7 +2,7 @@ package com.jiaxin.algorithm.class01;
 
 public class Code07_EvenTimesOddTimes {
 
-	// arr中，只有一种数，出现奇数次
+	// arr中，只有一种数，出现奇数次 1 2 2
 	public static void printOddTimesNum1(int[] arr) {
 		int eor = 0;
 		for (int i = 0; i < arr.length; i++) {

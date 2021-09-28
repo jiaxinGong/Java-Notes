@@ -1,5 +1,9 @@
 package com.jiaxin.algorithm.class02;
 
+/**
+ * 环形数组
+ * limit  size pushIndex  pollIndex
+ */
 public class Code04_RingArray {
 
 	public static class MyQueue {

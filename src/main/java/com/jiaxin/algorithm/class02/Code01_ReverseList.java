@@ -23,6 +23,11 @@ public class Code01_ReverseList {
 		}
 	}
 
+	// p  n
+	// head
+	// a -> b -> c
+	// c -> b -> a
+	// head
 	public static Node reverseLinkedList(Node head) {
 		Node pre = null;
 		Node next = null;
