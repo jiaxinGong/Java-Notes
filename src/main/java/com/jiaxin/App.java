@@ -4,6 +4,7 @@ package com.jiaxin;
 import org.springframework.util.StringUtils;
 
 import java.util.Arrays;
+import java.util.ServiceLoader;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.LongAdder;
 import java.util.stream.Collectors;
@@ -32,7 +33,6 @@ public class App {
         String newPath = "/" + Arrays.stream(StringUtils.tokenizeToStringArray(rawPath, "/")).skip(1L)
             .collect(Collectors.joining("/"));
         System.out.println(newPath);
-
     }
 
 }
