@@ -58,5 +58,23 @@ catalina_base 配置文件的目录
 
 
 
+# tomcat的web.xml
+
+web.xml 是所有项目的默认配置值，自己配置的web.xml是可以覆盖默认配置的，好比类的继承
+
+
+
+# tomcat的Context.xml
+
+每个应用斗加载conf/context.xml，context代表 了一个web应用，WEB-INFO web元数据目录，META-INFO元数据目录
+
+WatchedResource标签是用来监听资源的，默认监听了WEB-INF/web.xml ￥{catalina.base}/conf/web.xml
+
+
+
+
+
+
+
 
 
