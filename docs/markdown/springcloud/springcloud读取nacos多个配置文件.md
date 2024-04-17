@@ -9,5 +9,3 @@ ${spring.application.name}-${spring.profiles.active}.properties  或者 ${spring
 ${spirng.cloud.nacos.config.shared-configs}
 
 ![image-20210928100901750](picture/image-20210928100901750.png)
-![image-20210928100901751](https://github.com/jiaxinGong/Java-Notes/blob/master/docs/markdown/picture/image-20210928100901750.png)
-
