@@ -8,4 +8,5 @@ ${spring.application.name}-${spring.profiles.active}.propertie  或者 ${spring.
 
 ${spirng.cloud.nacos.config.shared-configs}
 
-![image-20210928100901750](..\picture\image-20210929155808948.png)
+![image-20210928100901750](..\picture\image-20210928100901750.png)
+
